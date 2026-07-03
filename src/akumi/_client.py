@@ -15,7 +15,7 @@ class Akumi:
         self,
         *,
         api_key: str,
-        base_url: str = "https://api.akumi.cloud",
+        base_url: str = "https://api.akumi.cloud/v1",
         max_retries: int = 2,
     ) -> None:
         config = ClientConfig(api_key=api_key, base_url=base_url, max_retries=max_retries)

@@ -11,6 +11,6 @@ class ClientConfig:
     query string."""
 
     api_key: str
-    base_url: str = "https://api.akumi.cloud"
+    base_url: str = "https://api.akumi.cloud/v1"
     max_retries: int = 2
     retry_on: tuple[int, ...] = field(default_factory=lambda: (429, 500, 502, 503, 504))
