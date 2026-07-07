@@ -90,6 +90,25 @@ class ChatCompletionsRequest:
 
 
 @dataclass
+class EmbeddingsRequest:
+    model: str
+    input: list[str]
+    encoding_format: str | None = None
+    dimensions: int | None = None
+    user: str | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "EmbeddingsRequest":
+        return cls(
+            model=data["model"],
+            input=data["input"],
+            encoding_format=data.get("encoding_format"),
+            dimensions=data.get("dimensions"),
+            user=data.get("user"),
+        )
+
+
+@dataclass
 class ThreadMessageViewModel:
 
     @classmethod

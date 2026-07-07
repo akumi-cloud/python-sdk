@@ -14,6 +14,7 @@ from ._errors import (
 from .models import (
     AuditLogApiResource,
     ChatCompletionsRequest,
+    EmbeddingsRequest,
     ThreadMessageViewModel,
     ThreadViewModel,
 )
@@ -29,6 +30,7 @@ __all__ = [
     "RateLimitError",
     "AuditLogApiResource",
     "ChatCompletionsRequest",
+    "EmbeddingsRequest",
     "ThreadMessageViewModel",
     "ThreadViewModel",
 ]
