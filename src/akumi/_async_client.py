@@ -3,12 +3,11 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import AsyncTransport
+from .resources.recall_async import AsyncRecallResource
 from .resources.auditLogs_async import AsyncAuditLogsResource
 from .resources.chat_async import AsyncChatResource
 from .resources.embeddings_async import AsyncEmbeddingsResource
 from .resources.models_async import AsyncModelsResource
-from .resources.memory_async import AsyncMemoryResource
-from .resources.memoryThreads_async import AsyncMemoryThreadsResource
 
 
 class AsyncAkumi:
@@ -21,12 +20,11 @@ class AsyncAkumi:
     ) -> None:
         config = ClientConfig(api_key=api_key, base_url=base_url, max_retries=max_retries)
         self._transport = AsyncTransport(config)
+        self.recall = AsyncRecallResource(self._transport)
         self.auditLogs = AsyncAuditLogsResource(self._transport)
         self.chat = AsyncChatResource(self._transport)
         self.embeddings = AsyncEmbeddingsResource(self._transport)
         self.models = AsyncModelsResource(self._transport)
-        self.memory = AsyncMemoryResource(self._transport)
-        self.memoryThreads = AsyncMemoryThreadsResource(self._transport)
 
     @classmethod
     def from_api_key(cls, api_key: str) -> "AsyncAkumi":

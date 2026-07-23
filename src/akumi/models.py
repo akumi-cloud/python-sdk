@@ -109,6 +109,94 @@ class EmbeddingsRequest:
 
 
 @dataclass
+class IngestDocumentRequest:
+    title: str
+    text: str
+    source: str | None = None
+    collection: str | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "IngestDocumentRequest":
+        return cls(
+            title=data["title"],
+            text=data["text"],
+            source=data.get("source"),
+            collection=data.get("collection"),
+        )
+
+
+@dataclass
+class RememberFactRequest:
+    content: str
+    user_ref: str
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "RememberFactRequest":
+        return cls(
+            content=data["content"],
+            user_ref=data["user_ref"],
+        )
+
+
+@dataclass
+class SearchDocumentsRequest:
+    query: str
+    collection: str
+    user_ref: str | None = None
+    limit: int | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "SearchDocumentsRequest":
+        return cls(
+            query=data["query"],
+            collection=data["collection"],
+            user_ref=data.get("user_ref"),
+            limit=data.get("limit"),
+        )
+
+
+@dataclass
+class SearchFactsRequest:
+    query: str
+    user_ref: str | None = None
+    limit: int | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "SearchFactsRequest":
+        return cls(
+            query=data["query"],
+            user_ref=data.get("user_ref"),
+            limit=data.get("limit"),
+        )
+
+
+@dataclass
+class SearchRequest:
+    query: str
+    user_ref: str | None = None
+    limit: int | None = None
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "SearchRequest":
+        return cls(
+            query=data["query"],
+            user_ref=data.get("user_ref"),
+            limit=data.get("limit"),
+        )
+
+
+@dataclass
+class StoreCollectionRequest:
+    name: str
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "StoreCollectionRequest":
+        return cls(
+            name=data["name"],
+        )
+
+
+@dataclass
 class ThreadMessageViewModel:
 
     @classmethod
