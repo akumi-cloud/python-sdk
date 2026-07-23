@@ -11,7 +11,9 @@ class AkumiError(Exception):
 class ApiError(AkumiError):
     """An error returned by the API. Carries the HTTP status and decoded body."""
 
-    def __init__(self, message: str, status: int, body: dict[str, Any] | None = None) -> None:
+    def __init__(
+        self, message: str, status: int, body: dict[str, Any] | None = None
+    ) -> None:
         super().__init__(message)
         self.status = status
         self.body: dict[str, Any] = body if body is not None else {}

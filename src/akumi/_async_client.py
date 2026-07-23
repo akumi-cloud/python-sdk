@@ -3,11 +3,11 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import AsyncTransport
-from .resources.recall_async import AsyncRecallResource
 from .resources.auditLogs_async import AsyncAuditLogsResource
 from .resources.chat_async import AsyncChatResource
 from .resources.embeddings_async import AsyncEmbeddingsResource
 from .resources.models_async import AsyncModelsResource
+from .resources.recall_async import AsyncRecallResource
 
 
 class AsyncAkumi:
@@ -18,7 +18,9 @@ class AsyncAkumi:
         base_url: str = "https://api.akumi.cloud/v1",
         max_retries: int = 2,
     ) -> None:
-        config = ClientConfig(api_key=api_key, base_url=base_url, max_retries=max_retries)
+        config = ClientConfig(
+            api_key=api_key, base_url=base_url, max_retries=max_retries
+        )
         self._transport = AsyncTransport(config)
         self.recall = AsyncRecallResource(self._transport)
         self.auditLogs = AsyncAuditLogsResource(self._transport)
@@ -27,5 +29,5 @@ class AsyncAkumi:
         self.models = AsyncModelsResource(self._transport)
 
     @classmethod
-    def from_api_key(cls, api_key: str) -> "AsyncAkumi":
+    def from_api_key(cls, api_key: str) -> AsyncAkumi:
         return cls(api_key=api_key)

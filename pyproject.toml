@@ -20,6 +20,13 @@ packages = ["src/akumi"]
 [tool.ruff]
 target-version = "py39"
 
+[tool.ruff.lint]
+# The transport's __enter__/__aenter__ return the concrete transport type rather
+# than Self, which on Python < 3.11 would pull in typing_extensions just for an
+# annotation. PYI034 is a stylistic preference, so ignore it and keep the runtime
+# dependency-free. All other lint rules are auto-fixed in CI (ruff check --fix).
+ignore = ["PYI034"]
+
 [tool.mypy]
 python_version = "3.9"
 ignore_missing_imports = true

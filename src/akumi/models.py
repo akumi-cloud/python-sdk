@@ -18,7 +18,7 @@ class AuditLogApiResource:
     createdAt: str
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "AuditLogApiResource":
+    def from_dict(cls, data: dict[str, Any]) -> AuditLogApiResource:
         return cls(
             id=data["id"],
             component=data["component"],
@@ -60,7 +60,7 @@ class ChatCompletionsRequest:
     tools: list[Any] | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "ChatCompletionsRequest":
+    def from_dict(cls, data: dict[str, Any]) -> ChatCompletionsRequest:
         return cls(
             model=data["model"],
             messages=data["messages"],
@@ -98,7 +98,7 @@ class EmbeddingsRequest:
     user: str | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "EmbeddingsRequest":
+    def from_dict(cls, data: dict[str, Any]) -> EmbeddingsRequest:
         return cls(
             model=data["model"],
             input=data["input"],
@@ -116,7 +116,7 @@ class IngestDocumentRequest:
     collection: str | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "IngestDocumentRequest":
+    def from_dict(cls, data: dict[str, Any]) -> IngestDocumentRequest:
         return cls(
             title=data["title"],
             text=data["text"],
@@ -131,7 +131,7 @@ class RememberFactRequest:
     user_ref: str
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "RememberFactRequest":
+    def from_dict(cls, data: dict[str, Any]) -> RememberFactRequest:
         return cls(
             content=data["content"],
             user_ref=data["user_ref"],
@@ -146,7 +146,7 @@ class SearchDocumentsRequest:
     limit: int | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "SearchDocumentsRequest":
+    def from_dict(cls, data: dict[str, Any]) -> SearchDocumentsRequest:
         return cls(
             query=data["query"],
             collection=data["collection"],
@@ -162,7 +162,7 @@ class SearchFactsRequest:
     limit: int | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "SearchFactsRequest":
+    def from_dict(cls, data: dict[str, Any]) -> SearchFactsRequest:
         return cls(
             query=data["query"],
             user_ref=data.get("user_ref"),
@@ -177,7 +177,7 @@ class SearchRequest:
     limit: int | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "SearchRequest":
+    def from_dict(cls, data: dict[str, Any]) -> SearchRequest:
         return cls(
             query=data["query"],
             user_ref=data.get("user_ref"),
@@ -190,7 +190,7 @@ class StoreCollectionRequest:
     name: str
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "StoreCollectionRequest":
+    def from_dict(cls, data: dict[str, Any]) -> StoreCollectionRequest:
         return cls(
             name=data["name"],
         )
@@ -198,17 +198,13 @@ class StoreCollectionRequest:
 
 @dataclass
 class ThreadMessageViewModel:
-
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "ThreadMessageViewModel":
-        return cls(
-        )
+    def from_dict(cls, data: dict[str, Any]) -> ThreadMessageViewModel:
+        return cls()
 
 
 @dataclass
 class ThreadViewModel:
-
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "ThreadViewModel":
-        return cls(
-        )
+    def from_dict(cls, data: dict[str, Any]) -> ThreadViewModel:
+        return cls()

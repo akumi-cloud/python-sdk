@@ -52,7 +52,7 @@ class SyncTransport:
     def close(self) -> None:
         self._client.close()
 
-    def __enter__(self) -> "SyncTransport":
+    def __enter__(self) -> SyncTransport:
         return self
 
     def __exit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
@@ -82,7 +82,9 @@ class SyncTransport:
         content = json.dumps(body) if body is not None else None
         if content is not None:
             headers["Content-Type"] = "application/json"
-        with self._client.stream(method, url, headers=headers, content=content) as response:
+        with self._client.stream(
+            method, url, headers=headers, content=content
+        ) as response:
             if response.status_code >= 400:
                 response.read()
                 raise map_error(response.status_code, _error_body(response.text))
@@ -109,11 +111,16 @@ class SyncTransport:
 
         attempt = 0
         while True:
-            response = self._client.request(method, url, headers=headers, content=content)
+            response = self._client.request(
+                method, url, headers=headers, content=content
+            )
             if response.status_code < 400:
                 return response
 
-            should_retry = attempt < self._config.max_retries and response.status_code in self._config.retry_on
+            should_retry = (
+                attempt < self._config.max_retries
+                and response.status_code in self._config.retry_on
+            )
             if should_retry:
                 attempt += 1
                 time.sleep(0.25 * (2 ** (attempt - 1)))
@@ -133,10 +140,12 @@ class AsyncTransport:
     async def aclose(self) -> None:
         await self._client.aclose()
 
-    async def __aenter__(self) -> "AsyncTransport":
+    async def __aenter__(self) -> AsyncTransport:
         return self
 
-    async def __aexit__(self, exc_type: object, exc_val: object, exc_tb: object) -> None:
+    async def __aexit__(
+        self, exc_type: object, exc_val: object, exc_tb: object
+    ) -> None:
         await self.aclose()
 
     async def arequest(
@@ -163,7 +172,9 @@ class AsyncTransport:
         content = json.dumps(body) if body is not None else None
         if content is not None:
             headers["Content-Type"] = "application/json"
-        async with self._client.stream(method, url, headers=headers, content=content) as response:
+        async with self._client.stream(
+            method, url, headers=headers, content=content
+        ) as response:
             if response.status_code >= 400:
                 await response.aread()
                 raise map_error(response.status_code, _error_body(response.text))
@@ -190,11 +201,16 @@ class AsyncTransport:
 
         attempt = 0
         while True:
-            response = await self._client.request(method, url, headers=headers, content=content)
+            response = await self._client.request(
+                method, url, headers=headers, content=content
+            )
             if response.status_code < 400:
                 return response
 
-            should_retry = attempt < self._config.max_retries and response.status_code in self._config.retry_on
+            should_retry = (
+                attempt < self._config.max_retries
+                and response.status_code in self._config.retry_on
+            )
             if should_retry:
                 attempt += 1
                 await asyncio.sleep(0.25 * (2 ** (attempt - 1)))

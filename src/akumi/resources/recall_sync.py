@@ -20,7 +20,9 @@ class RecallResource:
         return self._transport.request("GET", f"/recall/threads/{thread}", None, None)
 
     def deleteThread(self, thread: str) -> dict[str, Any]:
-        return self._transport.request("DELETE", f"/recall/threads/{thread}", None, None)
+        return self._transport.request(
+            "DELETE", f"/recall/threads/{thread}", None, None
+        )
 
     def search(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
         return self._transport.request("POST", "/recall/search", None, params)
@@ -53,10 +55,14 @@ class RecallResource:
         return self._transport.request("POST", "/recall/documents", None, params)
 
     def getDocument(self, document: str) -> dict[str, Any]:
-        return self._transport.request("GET", f"/recall/documents/{document}", None, None)
+        return self._transport.request(
+            "GET", f"/recall/documents/{document}", None, None
+        )
 
     def deleteDocument(self, document: str) -> dict[str, Any]:
-        return self._transport.request("DELETE", f"/recall/documents/{document}", None, None)
+        return self._transport.request(
+            "DELETE", f"/recall/documents/{document}", None, None
+        )
 
     def listCollections(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
         return self._transport.request("GET", "/recall/collections", query, None)
@@ -68,7 +74,13 @@ class RecallResource:
         return self._transport.request("GET", f"/recall/collections/{slug}", None, None)
 
     def deleteCollection(self, slug: str) -> dict[str, Any]:
-        return self._transport.request("DELETE", f"/recall/collections/{slug}", None, None)
+        return self._transport.request(
+            "DELETE", f"/recall/collections/{slug}", None, None
+        )
 
-    def updateCollection(self, slug: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("PATCH", f"/recall/collections/{slug}", None, params)
+    def updateCollection(
+        self, slug: str, params: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
+        return self._transport.request(
+            "PATCH", f"/recall/collections/{slug}", None, params
+        )

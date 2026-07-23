@@ -3,11 +3,11 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import SyncTransport
-from .resources.recall_sync import RecallResource
 from .resources.auditLogs_sync import AuditLogsResource
 from .resources.chat_sync import ChatResource
 from .resources.embeddings_sync import EmbeddingsResource
 from .resources.models_sync import ModelsResource
+from .resources.recall_sync import RecallResource
 
 
 class Akumi:
@@ -18,7 +18,9 @@ class Akumi:
         base_url: str = "https://api.akumi.cloud/v1",
         max_retries: int = 2,
     ) -> None:
-        config = ClientConfig(api_key=api_key, base_url=base_url, max_retries=max_retries)
+        config = ClientConfig(
+            api_key=api_key, base_url=base_url, max_retries=max_retries
+        )
         self._transport = SyncTransport(config)
         self.recall = RecallResource(self._transport)
         self.auditLogs = AuditLogsResource(self._transport)
@@ -27,5 +29,5 @@ class Akumi:
         self.models = ModelsResource(self._transport)
 
     @classmethod
-    def from_api_key(cls, api_key: str) -> "Akumi":
+    def from_api_key(cls, api_key: str) -> Akumi:
         return cls(api_key=api_key)

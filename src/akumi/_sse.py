@@ -13,7 +13,7 @@ def parse_sse_line(line: str) -> dict[str, Any] | None:
     if not line.startswith("data:"):
         return None
 
-    data = line[len("data:"):].strip()
+    data = line[len("data:") :].strip()
     if data == "" or data == DONE_SENTINEL:
         return None
 
