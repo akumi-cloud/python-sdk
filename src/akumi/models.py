@@ -34,8 +34,8 @@ class AuditLogApiResource:
 
 @dataclass
 class ChatCompletionsRequest:
-    model: str
     messages: list[Any]
+    model: str | None = None
     temperature: float | None = None
     max_tokens: int | None = None
     stream: bool | None = None
@@ -54,6 +54,9 @@ class ChatCompletionsRequest:
     tool_choice: str | None = None
     parallel_tool_calls: bool | None = None
     cache: bool | None = None
+    models: list[str] | None = None
+    provider: Any | None = None
+    stream_options: Any | None = None
     stop: list[str] | None = None
     logit_bias: list[float] | None = None
     response_format: Any | None = None
@@ -62,8 +65,8 @@ class ChatCompletionsRequest:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> ChatCompletionsRequest:
         return cls(
-            model=data["model"],
             messages=data["messages"],
+            model=data.get("model"),
             temperature=data.get("temperature"),
             max_tokens=data.get("max_tokens"),
             stream=data.get("stream"),
@@ -82,6 +85,9 @@ class ChatCompletionsRequest:
             tool_choice=data.get("tool_choice"),
             parallel_tool_calls=data.get("parallel_tool_calls"),
             cache=data.get("cache"),
+            models=data.get("models"),
+            provider=data.get("provider"),
+            stream_options=data.get("stream_options"),
             stop=data.get("stop"),
             logit_bias=data.get("logit_bias"),
             response_format=data.get("response_format"),
