@@ -40,7 +40,6 @@ class ChatCompletionsRequest:
     max_tokens: int | None = None
     stream: bool | None = None
     firewall: bool | None = None
-    rag: str | None = None
     user: str | None = None
     thread: str | None = None
     top_p: float | None = None
@@ -57,6 +56,7 @@ class ChatCompletionsRequest:
     models: list[str] | None = None
     provider: Any | None = None
     stream_options: Any | None = None
+    collection: list[str] | None = None
     stop: list[str] | None = None
     logit_bias: list[float] | None = None
     response_format: Any | None = None
@@ -71,7 +71,6 @@ class ChatCompletionsRequest:
             max_tokens=data.get("max_tokens"),
             stream=data.get("stream"),
             firewall=data.get("firewall"),
-            rag=data.get("rag"),
             user=data.get("user"),
             thread=data.get("thread"),
             top_p=data.get("top_p"),
@@ -88,6 +87,7 @@ class ChatCompletionsRequest:
             models=data.get("models"),
             provider=data.get("provider"),
             stream_options=data.get("stream_options"),
+            collection=data.get("collection"),
             stop=data.get("stop"),
             logit_bias=data.get("logit_bias"),
             response_format=data.get("response_format"),
@@ -118,16 +118,16 @@ class EmbeddingsRequest:
 class IngestDocumentRequest:
     title: str
     text: str
+    collection: str
     source: str | None = None
-    collection: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> IngestDocumentRequest:
         return cls(
             title=data["title"],
             text=data["text"],
+            collection=data["collection"],
             source=data.get("source"),
-            collection=data.get("collection"),
         )
 
 
@@ -147,7 +147,7 @@ class RememberFactRequest:
 @dataclass
 class SearchDocumentsRequest:
     query: str
-    collection: str
+    collection: list[str]
     user_ref: str | None = None
     limit: int | None = None
 
@@ -166,6 +166,7 @@ class SearchFactsRequest:
     query: str
     user_ref: str | None = None
     limit: int | None = None
+    collection: list[str] | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SearchFactsRequest:
@@ -173,6 +174,7 @@ class SearchFactsRequest:
             query=data["query"],
             user_ref=data.get("user_ref"),
             limit=data.get("limit"),
+            collection=data.get("collection"),
         )
 
 
@@ -181,6 +183,7 @@ class SearchRequest:
     query: str
     user_ref: str | None = None
     limit: int | None = None
+    collection: list[str] | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SearchRequest:
@@ -188,6 +191,7 @@ class SearchRequest:
             query=data["query"],
             user_ref=data.get("user_ref"),
             limit=data.get("limit"),
+            collection=data.get("collection"),
         )
 
 
