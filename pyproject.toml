@@ -12,7 +12,14 @@ requires-python = ">=3.9"
 dependencies = ["httpx>=0.27"]
 
 [project.optional-dependencies]
-dev = ["mypy>=1.11", "ruff>=0.6"]
+# ruff is pinned exactly, on purpose. CI reinstalls this extra on every run and
+# then rewrites the generated sources with `ruff check --fix` + `ruff format`.
+# The release trigger is "did the generated output change", so an unpinned ruff
+# makes someone else's formatter release cut an Akumi release: a new ruff whose
+# formatting differs by a byte produces a diff with no input change on our side,
+# which auto-commits to the public SDK repo, tags a patch, and publishes to PyPI.
+# Pinning keeps a release something we caused. Bump it deliberately.
+dev = ["mypy>=1.11", "ruff==0.16.1"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/akumi"]
