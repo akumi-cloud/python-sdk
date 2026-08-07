@@ -14,8 +14,8 @@ class AuditLogApiResource:
     ipAddress: str | None
     userAgent: str | None
     target: Any | None
-    metadata: Any | None
-    createdAt: str | None
+    metadata: list[Any] | None
+    createdAt: str
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> AuditLogApiResource:
@@ -36,66 +36,66 @@ class AuditLogApiResource:
 class ChatCompletionsRequest:
     messages: list[Any]
     model: str | None = None
-    models: list[str] | None = None
-    provider: Any | None = None
     temperature: float | None = None
     max_tokens: int | None = None
     stream: bool | None = None
-    stream_options: Any | None = None
     firewall: bool | None = None
-    collection: list[str] | None = None
     user: str | None = None
     thread: str | None = None
-    tags: list[str] | None = None
     name: str | None = None
     top_p: float | None = None
-    stop: list[str] | None = None
     presence_penalty: float | None = None
     frequency_penalty: float | None = None
     n: int | None = None
     seed: int | None = None
-    logit_bias: list[float] | None = None
     logprobs: bool | None = None
     top_logprobs: int | None = None
     max_completion_tokens: int | None = None
-    tools: list[Any] | None = None
     tool_choice: str | None = None
     parallel_tool_calls: bool | None = None
     cache: bool | None = None
+    models: list[str] | None = None
+    provider: Any | None = None
+    stream_options: Any | None = None
+    collection: list[str] | None = None
+    tags: list[str] | None = None
+    stop: list[str] | None = None
+    logit_bias: list[float] | None = None
     response_format: Any | None = None
+    tools: list[Any] | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> ChatCompletionsRequest:
         return cls(
             messages=data["messages"],
             model=data.get("model"),
-            models=data.get("models"),
-            provider=data.get("provider"),
             temperature=data.get("temperature"),
             max_tokens=data.get("max_tokens"),
             stream=data.get("stream"),
-            stream_options=data.get("stream_options"),
             firewall=data.get("firewall"),
-            collection=data.get("collection"),
             user=data.get("user"),
             thread=data.get("thread"),
-            tags=data.get("tags"),
             name=data.get("name"),
             top_p=data.get("top_p"),
-            stop=data.get("stop"),
             presence_penalty=data.get("presence_penalty"),
             frequency_penalty=data.get("frequency_penalty"),
             n=data.get("n"),
             seed=data.get("seed"),
-            logit_bias=data.get("logit_bias"),
             logprobs=data.get("logprobs"),
             top_logprobs=data.get("top_logprobs"),
             max_completion_tokens=data.get("max_completion_tokens"),
-            tools=data.get("tools"),
             tool_choice=data.get("tool_choice"),
             parallel_tool_calls=data.get("parallel_tool_calls"),
             cache=data.get("cache"),
+            models=data.get("models"),
+            provider=data.get("provider"),
+            stream_options=data.get("stream_options"),
+            collection=data.get("collection"),
+            tags=data.get("tags"),
+            stop=data.get("stop"),
+            logit_bias=data.get("logit_bias"),
             response_format=data.get("response_format"),
+            tools=data.get("tools"),
         )
 
 
@@ -168,34 +168,34 @@ class SearchDocumentsRequest:
 @dataclass
 class SearchFactsRequest:
     query: str
-    collection: list[str] | None = None
     user_ref: str | None = None
     limit: int | None = None
+    collection: list[str] | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SearchFactsRequest:
         return cls(
             query=data["query"],
-            collection=data.get("collection"),
             user_ref=data.get("user_ref"),
             limit=data.get("limit"),
+            collection=data.get("collection"),
         )
 
 
 @dataclass
 class SearchRequest:
     query: str
-    collection: list[str] | None = None
     user_ref: str | None = None
     limit: int | None = None
+    collection: list[str] | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> SearchRequest:
         return cls(
             query=data["query"],
-            collection=data.get("collection"),
             user_ref=data.get("user_ref"),
             limit=data.get("limit"),
+            collection=data.get("collection"),
         )
 
 
