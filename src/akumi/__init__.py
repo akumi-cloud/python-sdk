@@ -21,6 +21,7 @@ from .models import (
     SearchFactsRequest,
     SearchRequest,
     StoreCollectionRequest,
+    StoreScoreRequest,
     ThreadMessageViewModel,
     ThreadViewModel,
 )
@@ -43,6 +44,7 @@ __all__ = [
     "SearchFactsRequest",
     "SearchRequest",
     "StoreCollectionRequest",
+    "StoreScoreRequest",
     "ThreadMessageViewModel",
     "ThreadViewModel",
 ]

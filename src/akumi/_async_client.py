@@ -8,6 +8,7 @@ from .resources.chat_async import AsyncChatResource
 from .resources.embeddings_async import AsyncEmbeddingsResource
 from .resources.models_async import AsyncModelsResource
 from .resources.recall_async import AsyncRecallResource
+from .resources.scores_async import AsyncScoresResource
 
 
 class AsyncAkumi:
@@ -23,6 +24,7 @@ class AsyncAkumi:
         )
         self._transport = AsyncTransport(config)
         self.recall = AsyncRecallResource(self._transport)
+        self.scores = AsyncScoresResource(self._transport)
         self.auditLogs = AsyncAuditLogsResource(self._transport)
         self.chat = AsyncChatResource(self._transport)
         self.embeddings = AsyncEmbeddingsResource(self._transport)

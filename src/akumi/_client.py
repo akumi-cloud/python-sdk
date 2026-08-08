@@ -8,6 +8,7 @@ from .resources.chat_sync import ChatResource
 from .resources.embeddings_sync import EmbeddingsResource
 from .resources.models_sync import ModelsResource
 from .resources.recall_sync import RecallResource
+from .resources.scores_sync import ScoresResource
 
 
 class Akumi:
@@ -23,6 +24,7 @@ class Akumi:
         )
         self._transport = SyncTransport(config)
         self.recall = RecallResource(self._transport)
+        self.scores = ScoresResource(self._transport)
         self.auditLogs = AuditLogsResource(self._transport)
         self.chat = ChatResource(self._transport)
         self.embeddings = EmbeddingsResource(self._transport)
