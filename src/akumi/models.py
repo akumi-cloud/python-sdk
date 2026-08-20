@@ -43,6 +43,7 @@ class ChatCompletionsRequest:
     stream: bool | None = None
     stream_options: Any | None = None
     firewall: bool | None = None
+    firewall_language: Any | None = None
     collection: list[str] | None = None
     user: str | None = None
     thread: str | None = None
@@ -76,6 +77,7 @@ class ChatCompletionsRequest:
             stream=data.get("stream"),
             stream_options=data.get("stream_options"),
             firewall=data.get("firewall"),
+            firewall_language=data.get("firewall_language"),
             collection=data.get("collection"),
             user=data.get("user"),
             thread=data.get("thread"),
@@ -133,6 +135,13 @@ class IngestDocumentRequest:
             collection=data["collection"],
             source=data.get("source"),
         )
+
+
+@dataclass
+class PiiLanguage:
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> PiiLanguage:
+        return cls()
 
 
 @dataclass
