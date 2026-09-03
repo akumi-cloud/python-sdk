@@ -1,6 +1,6 @@
 # Akumi Python SDK
 
-The official Python client for [Akumi](https://akumi.cloud), the EU-sovereign,
+The official Python client for [Akumi](https://akumi.eu), the EU-sovereign,
 OpenAI-compatible inference API. Built on httpx, with both a synchronous and an
 asynchronous client. One `base_url` for every model, governed and metered, with
 your regulated data kept in the EU.
@@ -22,7 +22,7 @@ pip install akumi
 
 ## Quickstart
 
-Create an API key under app.akumi.cloud -> Platform -> API keys:
+Create an API key under app.akumi.eu -> Platform -> API keys:
 
 ```python
 from akumi import Akumi
@@ -85,13 +85,13 @@ vector = embeddings["data"][0]["embedding"]
 
 ## Configuration
 
-`from_api_key()` connects to `https://api.akumi.cloud/v1` and retries transient
+`from_api_key()` connects to `https://api.akumi.eu/v1` and retries transient
 failures (429, 502, 503, 504). Pass `base_url=` to target another host.
 
 ## Documentation
 
-- Guides: https://akumi.cloud/docs
-- API reference: https://akumi.cloud/docs/api-reference
+- Guides: https://docs.akumi.eu
+- API reference: https://docs.akumi.eu/api-reference
 
 ## About
 

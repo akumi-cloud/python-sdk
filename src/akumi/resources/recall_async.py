@@ -29,11 +29,6 @@ class AsyncRecallResource:
     async def search(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
         return await self._transport.arequest("POST", "/recall/search", None, params)
 
-    async def searchFacts(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return await self._transport.arequest(
-            "POST", "/recall/facts/search", None, params
-        )
-
     async def listFacts(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
         return await self._transport.arequest("GET", "/recall/facts", query, None)
 
@@ -52,13 +47,6 @@ class AsyncRecallResource:
 
     async def erase(self) -> dict[str, Any]:
         return await self._transport.arequest("DELETE", "/recall", None, None)
-
-    async def searchDocuments(
-        self, params: dict[str, Any] | None = None
-    ) -> dict[str, Any]:
-        return await self._transport.arequest(
-            "POST", "/recall/documents/search", None, params
-        )
 
     async def listDocuments(
         self, query: dict[str, Any] | None = None

@@ -27,9 +27,6 @@ class RecallResource:
     def search(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
         return self._transport.request("POST", "/recall/search", None, params)
 
-    def searchFacts(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/facts/search", None, params)
-
     def listFacts(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
         return self._transport.request("GET", "/recall/facts", query, None)
 
@@ -44,9 +41,6 @@ class RecallResource:
 
     def erase(self) -> dict[str, Any]:
         return self._transport.request("DELETE", "/recall", None, None)
-
-    def searchDocuments(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/documents/search", None, params)
 
     def listDocuments(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
         return self._transport.request("GET", "/recall/documents", query, None)

@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import SyncTransport
-from .resources.auditLogs_sync import AuditLogsResource
-from .resources.chat_sync import ChatResource
+from .resources.auditLog_sync import AuditLogResource
+from .resources.chatCompletions_sync import ChatCompletionsResource
 from .resources.embeddings_sync import EmbeddingsResource
 from .resources.models_sync import ModelsResource
 from .resources.recall_sync import RecallResource
@@ -16,19 +16,19 @@ class Akumi:
         self,
         *,
         api_key: str,
-        base_url: str = "https://api.akumi.cloud/v1",
+        base_url: str = "https://api.akumi.eu/v1",
         max_retries: int = 2,
     ) -> None:
         config = ClientConfig(
             api_key=api_key, base_url=base_url, max_retries=max_retries
         )
         self._transport = SyncTransport(config)
-        self.recall = RecallResource(self._transport)
-        self.scores = ScoresResource(self._transport)
-        self.auditLogs = AuditLogsResource(self._transport)
-        self.chat = ChatResource(self._transport)
+        self.auditLog = AuditLogResource(self._transport)
+        self.chatCompletions = ChatCompletionsResource(self._transport)
         self.embeddings = EmbeddingsResource(self._transport)
         self.models = ModelsResource(self._transport)
+        self.recall = RecallResource(self._transport)
+        self.scores = ScoresResource(self._transport)
 
     @classmethod
     def from_api_key(cls, api_key: str) -> Akumi:

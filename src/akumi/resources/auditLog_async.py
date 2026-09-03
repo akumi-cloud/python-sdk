@@ -6,7 +6,7 @@ from typing import Any
 from .._transport import AsyncTransport
 
 
-class AsyncAuditLogsResource:
+class AsyncAuditLogResource:
     def __init__(self, transport: AsyncTransport) -> None:
         self._transport = transport
 

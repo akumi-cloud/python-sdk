@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import AsyncTransport
-from .resources.auditLogs_async import AsyncAuditLogsResource
-from .resources.chat_async import AsyncChatResource
+from .resources.auditLog_async import AsyncAuditLogResource
+from .resources.chatCompletions_async import AsyncChatCompletionsResource
 from .resources.embeddings_async import AsyncEmbeddingsResource
 from .resources.models_async import AsyncModelsResource
 from .resources.recall_async import AsyncRecallResource
@@ -16,19 +16,19 @@ class AsyncAkumi:
         self,
         *,
         api_key: str,
-        base_url: str = "https://api.akumi.cloud/v1",
+        base_url: str = "https://api.akumi.eu/v1",
         max_retries: int = 2,
     ) -> None:
         config = ClientConfig(
             api_key=api_key, base_url=base_url, max_retries=max_retries
         )
         self._transport = AsyncTransport(config)
-        self.recall = AsyncRecallResource(self._transport)
-        self.scores = AsyncScoresResource(self._transport)
-        self.auditLogs = AsyncAuditLogsResource(self._transport)
-        self.chat = AsyncChatResource(self._transport)
+        self.auditLog = AsyncAuditLogResource(self._transport)
+        self.chatCompletions = AsyncChatCompletionsResource(self._transport)
         self.embeddings = AsyncEmbeddingsResource(self._transport)
         self.models = AsyncModelsResource(self._transport)
+        self.recall = AsyncRecallResource(self._transport)
+        self.scores = AsyncScoresResource(self._transport)
 
     @classmethod
     def from_api_key(cls, api_key: str) -> AsyncAkumi:

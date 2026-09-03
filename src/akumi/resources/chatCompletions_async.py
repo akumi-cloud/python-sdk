@@ -7,7 +7,7 @@ from typing import Any
 from .._transport import AsyncTransport
 
 
-class AsyncChatResource:
+class AsyncChatCompletionsResource:
     def __init__(self, transport: AsyncTransport) -> None:
         self._transport = transport
 

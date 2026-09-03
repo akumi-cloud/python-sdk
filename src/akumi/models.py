@@ -158,40 +158,6 @@ class RememberFactRequest:
 
 
 @dataclass
-class SearchDocumentsRequest:
-    query: str
-    collection: list[str]
-    user_ref: str | None = None
-    limit: int | None = None
-
-    @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> SearchDocumentsRequest:
-        return cls(
-            query=data["query"],
-            collection=data["collection"],
-            user_ref=data.get("user_ref"),
-            limit=data.get("limit"),
-        )
-
-
-@dataclass
-class SearchFactsRequest:
-    query: str
-    collection: list[str] | None = None
-    user_ref: str | None = None
-    limit: int | None = None
-
-    @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> SearchFactsRequest:
-        return cls(
-            query=data["query"],
-            collection=data.get("collection"),
-            user_ref=data.get("user_ref"),
-            limit=data.get("limit"),
-        )
-
-
-@dataclass
 class SearchRequest:
     query: str
     collection: list[str] | None = None
