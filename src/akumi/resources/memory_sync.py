@@ -6,75 +6,75 @@ from typing import Any
 from .._transport import SyncTransport
 
 
-class RecallResource:
+class MemoryResource:
     def __init__(self, transport: SyncTransport) -> None:
         self._transport = transport
 
     def listThreads(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("GET", "/recall/threads", query, None)
+        return self._transport.request("GET", "/memory/threads", query, None)
 
     def createThread(self) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/threads", None, None)
+        return self._transport.request("POST", "/memory/threads", None, None)
 
     def getThread(self, thread: str) -> dict[str, Any]:
-        return self._transport.request("GET", f"/recall/threads/{thread}", None, None)
+        return self._transport.request("GET", f"/memory/threads/{thread}", None, None)
 
     def deleteThread(self, thread: str) -> dict[str, Any]:
         return self._transport.request(
-            "DELETE", f"/recall/threads/{thread}", None, None
+            "DELETE", f"/memory/threads/{thread}", None, None
         )
 
     def search(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/search", None, params)
+        return self._transport.request("POST", "/memory/search", None, params)
 
     def listFacts(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("GET", "/recall/facts", query, None)
+        return self._transport.request("GET", "/memory/facts", query, None)
 
     def rememberFact(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/facts", None, params)
+        return self._transport.request("POST", "/memory/facts", None, params)
 
     def forgetFact(self, id: str) -> dict[str, Any]:
-        return self._transport.request("DELETE", f"/recall/facts/{id}", None, None)
+        return self._transport.request("DELETE", f"/memory/facts/{id}", None, None)
 
     def export(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("GET", "/recall/export", query, None)
+        return self._transport.request("GET", "/memory/export", query, None)
 
     def erase(self) -> dict[str, Any]:
-        return self._transport.request("DELETE", "/recall", None, None)
+        return self._transport.request("DELETE", "/memory", None, None)
 
     def listDocuments(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("GET", "/recall/documents", query, None)
+        return self._transport.request("GET", "/memory/documents", query, None)
 
     def ingestDocument(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/documents", None, params)
+        return self._transport.request("POST", "/memory/documents", None, params)
 
     def getDocument(self, document: str) -> dict[str, Any]:
         return self._transport.request(
-            "GET", f"/recall/documents/{document}", None, None
+            "GET", f"/memory/documents/{document}", None, None
         )
 
     def deleteDocument(self, document: str) -> dict[str, Any]:
         return self._transport.request(
-            "DELETE", f"/recall/documents/{document}", None, None
+            "DELETE", f"/memory/documents/{document}", None, None
         )
 
     def listCollections(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("GET", "/recall/collections", query, None)
+        return self._transport.request("GET", "/memory/collections", query, None)
 
     def createCollection(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("POST", "/recall/collections", None, params)
+        return self._transport.request("POST", "/memory/collections", None, params)
 
     def getCollection(self, slug: str) -> dict[str, Any]:
-        return self._transport.request("GET", f"/recall/collections/{slug}", None, None)
+        return self._transport.request("GET", f"/memory/collections/{slug}", None, None)
 
     def deleteCollection(self, slug: str) -> dict[str, Any]:
         return self._transport.request(
-            "DELETE", f"/recall/collections/{slug}", None, None
+            "DELETE", f"/memory/collections/{slug}", None, None
         )
 
     def updateCollection(
         self, slug: str, params: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         return self._transport.request(
-            "PATCH", f"/recall/collections/{slug}", None, params
+            "PATCH", f"/memory/collections/{slug}", None, params
         )

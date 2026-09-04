@@ -6,8 +6,8 @@ from ._transport import SyncTransport
 from .resources.auditLog_sync import AuditLogResource
 from .resources.chatCompletions_sync import ChatCompletionsResource
 from .resources.embeddings_sync import EmbeddingsResource
+from .resources.memory_sync import MemoryResource
 from .resources.models_sync import ModelsResource
-from .resources.recall_sync import RecallResource
 from .resources.scores_sync import ScoresResource
 
 
@@ -26,8 +26,8 @@ class Akumi:
         self.auditLog = AuditLogResource(self._transport)
         self.chatCompletions = ChatCompletionsResource(self._transport)
         self.embeddings = EmbeddingsResource(self._transport)
+        self.memory = MemoryResource(self._transport)
         self.models = ModelsResource(self._transport)
-        self.recall = RecallResource(self._transport)
         self.scores = ScoresResource(self._transport)
 
     @classmethod

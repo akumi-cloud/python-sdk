@@ -6,8 +6,8 @@ from ._transport import AsyncTransport
 from .resources.auditLog_async import AsyncAuditLogResource
 from .resources.chatCompletions_async import AsyncChatCompletionsResource
 from .resources.embeddings_async import AsyncEmbeddingsResource
+from .resources.memory_async import AsyncMemoryResource
 from .resources.models_async import AsyncModelsResource
-from .resources.recall_async import AsyncRecallResource
 from .resources.scores_async import AsyncScoresResource
 
 
@@ -26,8 +26,8 @@ class AsyncAkumi:
         self.auditLog = AsyncAuditLogResource(self._transport)
         self.chatCompletions = AsyncChatCompletionsResource(self._transport)
         self.embeddings = AsyncEmbeddingsResource(self._transport)
+        self.memory = AsyncMemoryResource(self._transport)
         self.models = AsyncModelsResource(self._transport)
-        self.recall = AsyncRecallResource(self._transport)
         self.scores = AsyncScoresResource(self._transport)
 
     @classmethod
