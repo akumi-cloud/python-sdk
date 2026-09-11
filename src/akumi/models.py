@@ -10,12 +10,12 @@ class AuditLogApiResource:
     id: str
     component: str
     action: str
-    actorId: int | None
-    ipAddress: str | None
-    userAgent: str | None
+    actor_id: int | None
+    ip_address: str | None
+    user_agent: str | None
     target: Any | None
     metadata: Any | None
-    createdAt: str | None
+    created_at: str | None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> AuditLogApiResource:
@@ -23,12 +23,12 @@ class AuditLogApiResource:
             id=data["id"],
             component=data["component"],
             action=data["action"],
-            actorId=data["actorId"],
-            ipAddress=data["ipAddress"],
-            userAgent=data["userAgent"],
+            actor_id=data["actor_id"],
+            ip_address=data["ip_address"],
+            user_agent=data["user_agent"],
             target=data["target"],
             metadata=data["metadata"],
-            createdAt=data["createdAt"],
+            created_at=data["created_at"],
         )
 
 
