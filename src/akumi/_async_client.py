@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import AsyncTransport
+from .resources.agents_async import AsyncAgentsResource
 from .resources.auditLog_async import AsyncAuditLogResource
 from .resources.chatCompletions_async import AsyncChatCompletionsResource
 from .resources.embeddings_async import AsyncEmbeddingsResource
@@ -23,6 +24,7 @@ class AsyncAkumi:
             api_key=api_key, base_url=base_url, max_retries=max_retries
         )
         self._transport = AsyncTransport(config)
+        self.agents = AsyncAgentsResource(self._transport)
         self.auditLog = AsyncAuditLogResource(self._transport)
         self.chatCompletions = AsyncChatCompletionsResource(self._transport)
         self.embeddings = AsyncEmbeddingsResource(self._transport)

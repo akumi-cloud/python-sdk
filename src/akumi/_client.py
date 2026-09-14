@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from ._config import ClientConfig
 from ._transport import SyncTransport
+from .resources.agents_sync import AgentsResource
 from .resources.auditLog_sync import AuditLogResource
 from .resources.chatCompletions_sync import ChatCompletionsResource
 from .resources.embeddings_sync import EmbeddingsResource
@@ -23,6 +24,7 @@ class Akumi:
             api_key=api_key, base_url=base_url, max_retries=max_retries
         )
         self._transport = SyncTransport(config)
+        self.agents = AgentsResource(self._transport)
         self.auditLog = AuditLogResource(self._transport)
         self.chatCompletions = ChatCompletionsResource(self._transport)
         self.embeddings = EmbeddingsResource(self._transport)
