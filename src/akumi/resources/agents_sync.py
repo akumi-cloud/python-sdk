@@ -27,6 +27,11 @@ class AgentsResource:
     ) -> dict[str, Any]:
         return self._transport.request("PATCH", f"/agents/{agent}", None, params)
 
+    def v1AgentsCopy(
+        self, agent: str, params: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
+        return self._transport.request("POST", f"/agents/{agent}/copy", None, params)
+
     def v1AgentsVersionsIndex(self, agent: str) -> dict[str, Any]:
         return self._transport.request("GET", f"/agents/{agent}/versions", None, None)
 

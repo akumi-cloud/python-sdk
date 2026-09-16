@@ -29,6 +29,13 @@ class AsyncAgentsResource:
     ) -> dict[str, Any]:
         return await self._transport.arequest("PATCH", f"/agents/{agent}", None, params)
 
+    async def v1AgentsCopy(
+        self, agent: str, params: dict[str, Any] | None = None
+    ) -> dict[str, Any]:
+        return await self._transport.arequest(
+            "POST", f"/agents/{agent}/copy", None, params
+        )
+
     async def v1AgentsVersionsIndex(self, agent: str) -> dict[str, Any]:
         return await self._transport.arequest(
             "GET", f"/agents/{agent}/versions", None, None
