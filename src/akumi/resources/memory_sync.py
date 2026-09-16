@@ -10,20 +10,6 @@ class MemoryResource:
     def __init__(self, transport: SyncTransport) -> None:
         self._transport = transport
 
-    def listThreads(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return self._transport.request("GET", "/memory/threads", query, None)
-
-    def createThread(self) -> dict[str, Any]:
-        return self._transport.request("POST", "/memory/threads", None, None)
-
-    def getThread(self, thread: str) -> dict[str, Any]:
-        return self._transport.request("GET", f"/memory/threads/{thread}", None, None)
-
-    def deleteThread(self, thread: str) -> dict[str, Any]:
-        return self._transport.request(
-            "DELETE", f"/memory/threads/{thread}", None, None
-        )
-
     def search(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
         return self._transport.request("POST", "/memory/search", None, params)
 

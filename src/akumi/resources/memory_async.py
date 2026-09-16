@@ -10,22 +10,6 @@ class AsyncMemoryResource:
     def __init__(self, transport: AsyncTransport) -> None:
         self._transport = transport
 
-    async def listThreads(self, query: dict[str, Any] | None = None) -> dict[str, Any]:
-        return await self._transport.arequest("GET", "/memory/threads", query, None)
-
-    async def createThread(self) -> dict[str, Any]:
-        return await self._transport.arequest("POST", "/memory/threads", None, None)
-
-    async def getThread(self, thread: str) -> dict[str, Any]:
-        return await self._transport.arequest(
-            "GET", f"/memory/threads/{thread}", None, None
-        )
-
-    async def deleteThread(self, thread: str) -> dict[str, Any]:
-        return await self._transport.arequest(
-            "DELETE", f"/memory/threads/{thread}", None, None
-        )
-
     async def search(self, params: dict[str, Any] | None = None) -> dict[str, Any]:
         return await self._transport.arequest("POST", "/memory/search", None, params)
 

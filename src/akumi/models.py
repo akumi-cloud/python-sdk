@@ -202,17 +202,3 @@ class StoreScoreRequest:
             value_string=data.get("value_string"),
             comment=data.get("comment"),
         )
-
-
-@dataclass
-class ThreadMessageViewModel:
-    @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> ThreadMessageViewModel:
-        return cls()
-
-
-@dataclass
-class ThreadViewModel:
-    @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> ThreadViewModel:
-        return cls()
