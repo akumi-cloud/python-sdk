@@ -162,6 +162,8 @@ class SearchRequest:
     query: str
     collection: list[str] | None = None
     user_ref: str | None = None
+    as_of: str | None = None
+    between: Any | None = None
     limit: int | None = None
 
     @classmethod
@@ -170,6 +172,8 @@ class SearchRequest:
             query=data["query"],
             collection=data.get("collection"),
             user_ref=data.get("user_ref"),
+            as_of=data.get("as_of"),
+            between=data.get("between"),
             limit=data.get("limit"),
         )
 
